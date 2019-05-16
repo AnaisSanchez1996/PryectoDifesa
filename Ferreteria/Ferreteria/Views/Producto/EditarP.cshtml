@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "EditarP";
+}
+
+<h2>Editar Producto</h2>
+
+<form action="/Producto/Actualizar?Id=@Model.Id" method="post">
+    <input type="text" name="Codigo" value="@Model.Codigo" />
+    <input type="text" name="NombreP" value="@Model.NombreP" />
+    <input type="text" name="Stock" value="@Model.Stock" />
+    <input type="text" name="Precio" value="@Model.Precio" />
+    <select name="LocalId" id="LocalId" class="form-control" ">
+        <option value="">------</option>
+        @foreach (var item in ViewBag.Local)
+        {
+            <option value="@item.Id">@item.NLocal</option>
+        }
+
+    </select>
+
+
+    <button>Guardar</button>
+
+
+</form>
+
+
+
+

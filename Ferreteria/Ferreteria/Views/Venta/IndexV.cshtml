@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewBag.Title = "IndexV";
+}
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+<h2>Lista de Ventas Realizadas</h2>
+
+<a href="/Venta/IndexV">Registrar Nueva Venta</a>
+
+
+
+<div class="container">
+    <table class="table table-hover">
+
+        <thead>
+            <tr>
+
+
+                <th>Nombre</th>
+                <th>Fecha de Nacimiento</th>
+                <th>Sexo</th>
+                <th>Peso</th>
+                <th>Especie</th>
+                <th>Raza</th>
+                <th>Propietario</th>
+                <th></th>
+            </tr>
+
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+
+                <tr>
+
+                    <td>@item.Nombre</td>
+                    <td>@item.FechaN</td>
+                    <td>@item.Sexo</td>
+                    <td>@item.Peso</td>
+                    <td>@item.Especie</td>
+                    <td>@item.Raza</td>
+                    <td>@item.Propietarios.Nombres</td>
+
+                    <td></td>
+
+                    <td>
+                        <a href="/Mascota/Detalle?Id=@item.IdMascota">Ver</a> |
+                        <a href="/Mascota/editar?id=@item.IdMascota">Editar</a> |
+                        <a href="/Mascota/eliminar?id=@item.IdMascota">Eliminar</a>
+                    </td>
+
+                </tr>
+            }
+
+        </tbody>
+
+    </table>
+
+</div>

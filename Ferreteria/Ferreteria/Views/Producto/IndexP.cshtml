@@ -1,0 +1,78 @@
+﻿
+@{
+    ViewBag.Title = "IndexP";
+}
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+<fieldset>
+    <h4>Lista de Productos</h4>
+
+    @if (Session["Nombres"] != null)
+    {
+        <b>Bienvenido: @Session["Nombres"].ToString() </b>
+    }
+</fieldset>
+
+<br />
+
+
+
+<a href="/Producto/CrearP" target="_self"><button>Nuevo Producto</button></a>
+<br />
+<br />
+
+<form action="/Producto/indexP">
+    <input type="text" name="query" />
+    <button>Buscar</button>
+</form>
+
+<br />
+<br />
+<div class="container">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+
+                <th>Codigo  </th>
+                <th>Nombre de Producto      </th>
+                <th>Stock    </th>
+                <th>Precio    </th>
+                <th>Local    </th>
+
+
+            </tr>
+        </thead>
+
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+
+                    <td>@item.Codigo  </td>
+
+                    <td>@item.NombreP </td>
+
+                    <td>@item.Stock </td>
+
+                    <td>@item.Precio</td>
+
+                    <td>@item.IdLocal</td>
+
+
+
+
+                    <td>
+                        <a href="/Producto/detalleP?id=@item.Id">Ver</a> |
+                        <a href="/Producto/editarP?id=@item.Id">Editar</a> |
+                        <a href="/Producto/eliminar?id=@item.Id">Eliminar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+
+    </div>
+
+ 

@@ -1,0 +1,90 @@
+﻿
+
+
+@{
+    ViewBag.Title = "IndexU";
+}
+
+<head>
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+</head>
+
+
+
+<fieldset>
+    <h4>Lista de Usuarios</h4>
+
+    @if (Session["Nombres"] != null)
+    {
+        <b>Bienvenido: @Session["Nombres"].ToString() </b>
+    }
+</fieldset>
+
+<br />
+
+
+
+<a href="/Usuario/CrearU" target="_self"><button>Nuevo Usuario</button></a>
+<br />
+<br />
+
+<form action="/Usuario/indexU">
+    <input type="text" name="query" />
+    <button>Buscar</button>
+</form>
+
+<br />
+<br />
+<div class="container">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+
+                <th>DNI   </th>
+                <th>Nombres      </th>
+                <th>Apellidos    </th>
+                <th>Telefono    </th>
+                <th>Correo    </th>
+
+
+            </tr>
+        </thead>
+
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+
+                    <td>@item.DNI  </td>
+
+                    <td>@item.Nombres </td>
+
+                    <td>@item.Apellidos </td>
+
+                    <td>@item.Telefono</td>
+
+                    <td>@item.Correo</td>
+
+
+
+
+                    <td>
+                        <a href="/Usuario/detalleU?id=@item.Id">Ver</a> |
+                        <a href="/Usuario/editarU?id=@item.Id">Editar</a> |
+                        <a href="/Usuario/eliminar?id=@item.Id">Eliminar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+
+
+
+
+
+</div>

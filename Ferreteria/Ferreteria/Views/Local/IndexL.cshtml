@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewBag.Title = "IndexL";
+}
+
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+<a href="/Local/CrearL" target="_self"><button>Nuevo Usuario</button></a>
+<br />
+<br />
+
+<form action="/Local/indexL">
+    <input type="text" name="query" />
+    <button>Buscar</button>
+</form>
+
+<br />
+<br />
+
+<div class="container">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+
+                <th>Nombre Local   </th>
+                <th>Direccion      </th>
+                <th>Ciudad    </th>
+                <th>Encargado    </th>
+                </tr>
+        </thead>
+
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+
+                    <td>@item.NLocal  </td>
+
+                    <td>@item.Direccion </td>
+
+                    <td>@item.Ciudad </td>
+
+                    <td>@item.NombreU</td>
+
+
+
+
+
+
+                    <td>
+                        <a href="/Local/detalleL?id=@item.Id">Ver</a> |
+                        <a href="/Local/editarL?id=@item.Id">Editar</a> |
+                        <a href="/Local/eliminar?id=@item.Id">Eliminar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+
+
+
+
+
+ </div>

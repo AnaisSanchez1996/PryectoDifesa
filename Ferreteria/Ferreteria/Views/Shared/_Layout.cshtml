@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html>
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="navbar navbar-inverse">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Difesa", "IndexU", "Usuario", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Productos", "IndexP", "Producto")</li>
+                    <li>@Html.ActionLink("Locales", "IndexL", "Local")</li>
+                    <li>@Html.ActionLink("Ventas", "IndexV", "Venta")</li>
+                    <li>@Html.ActionLink("Registrar Usuario", "CrearU", "Usuario")</li>
+
+                </ul>
+            </div>
+            <div>
+
+                @*<div style="text-align: right">*@
+
+                <a href='~/Login/Ingreso' target='_top' onClick='javascript:parent.window.close()'><b><font size=6>Salir</font></b></a>
+
+
+
+                @*</div>*@
+
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+
+<script>
+    function cerrar() {
+        window.parent.close()
+    }
+</script>
+
+

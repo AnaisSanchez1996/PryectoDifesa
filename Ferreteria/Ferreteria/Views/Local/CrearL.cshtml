@@ -1,0 +1,103 @@
+﻿
+@{
+    ViewBag.Title = "CrearL";
+}
+
+
+<br />
+<br />
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+<div class="page-header">
+    <h1>Ingresar Nuevo Local</h1>
+</div>
+<br />
+<br />
+
+
+<div class="row">
+    <div class="col-lg-6">
+        <form class="form-horizontal" action="/Local/CrearL" method="post">
+            <div class="form-group">
+                <div class="col-sm-10">
+                    Nombre de Local:  <input id="NLocal" type="text" class="form-control" name="NLocal" />
+
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-10">
+                    Dirección:  <input id="Direccion" type="text" class="form-control" name="Direccion" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-10">
+                    Ciudad:  <input id="Ciudad" type="text" class="form-control" name="Ciudad" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-10">
+                    Encargado: <select name="NombreU" id="NombreU" class="form-control">
+                        @foreach (var item in ViewBag.ListaU)
+                        {
+                            <option value="@item.Nombres @item.Apellidos">@item.Nombres @item.Apellidos</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+
+                <div class="col-sm-10">
+                    <button type="submit" class="btn btn-danger" onclick="guardarLocal(event)">Guardar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-lg-6">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nombre Local</th>
+                    <th>Direccion</th>
+                    <th>Ciudad</th>
+                    <th>Encargado</th>
+                </tr>
+            </thead>
+            <tbody id="tbdoy"></tbody>
+        </table>
+    </div>
+
+
+</div>
+
+<script>
+
+    function guardarLocal(e) {
+
+        var local = {
+            DNI: $("#NLocal").val(),
+            Nombres: $("#Direccion").val(),
+            Apellidos: $("#Ciudad").val(),
+            Telefono: $("#NombreU").val(),
+           
+
+        };
+
+        $.post("/Local/CrearL", usuario, function (respuesta) {
+
+
+            $("#tbdoy").html(respuesta);
+
+
+        });
+
+        e.preventDefault();
+
+    }
+
+</script>
+
+
+
+
